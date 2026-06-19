@@ -4,14 +4,14 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/app/lib/gsap";
-import { profile, stats, projects } from "@/app/constants";
+import { profile, stats, companies } from "@/app/constants";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
 
 const posterLayout = [
-  { project: projects[0], className: "left-[5%] top-[8%] w-[45%] rotate-[-6deg] z-20", delay: 0 },
-  { project: projects[1], className: "right-[8%] top-[5%] w-[40%] rotate-[4deg] z-10", delay: 0.15 },
-  { project: projects[2], className: "left-[15%] bottom-[10%] w-[38%] rotate-[3deg] z-30", delay: 0.3 },
-  { project: projects[3], className: "right-[12%] bottom-[8%] w-[42%] rotate-[-3deg] z-15", delay: 0.45 },
+  { project: companies[0], className: "left-[5%] top-[8%] w-[45%] rotate-[-6deg] z-20", delay: 0 },
+  { project: companies[1], className: "right-[8%] top-[5%] w-[40%] rotate-[4deg] z-10", delay: 0.15 },
+  { project: companies[2], className: "left-[15%] bottom-[10%] w-[38%] rotate-[3deg] z-30", delay: 0.3 },
+  { project: companies[3], className: "right-[12%] bottom-[8%] w-[42%] rotate-[-3deg] z-15", delay: 0.45 },
 ];
 
 export default function Hero() {
@@ -134,7 +134,7 @@ export default function Hero() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 md:hidden">
-          {projects.slice(0, 4).map((project) => (
+          {companies.slice(0, 4).map((project) => (
             <div
               key={project.id}
               className="relative aspect-[3/4] overflow-hidden rounded-xl border border-border"

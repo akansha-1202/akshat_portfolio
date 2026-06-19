@@ -1,58 +1,99 @@
 "use client";
 
-import { useState } from "react";
-import { projects } from "@/app/constants";
-import TitleHeader from "@/app/components/TitleHeader.jsx";
-import FlipProjectCard from "@/app/components/FlipProjectCard.jsx";
-import VideoModal from "@/app/components/VideoModal.jsx";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/app/lib/gsap";
+import { companies, driveFolderUrl } from "@/app/constants";
+import WorkProjectTile from "@/app/components/WorkProjectTile";
+import WorkGalleryModal from "@/app/components/WorkGalleryModal";
 
 export default function WorkShowcase() {
-  const [activeProject, setActiveProject] = useState(null);
-  const featured = projects.find((p) => p.featured);
-  const others = projects.filter((p) => !p.featured);
+  const sectionRef = useRef(null);
+  const [gallery, setGallery] = useState(null);
+
+  const totalProjects = companies.reduce(
+    (n, c) =>
+      n + c.categories.reduce((s, cat) => s + (cat.items?.length || 0), 0),
+    0
+  );
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current) return;
+      gsap.fromTo(
+        sectionRef.current.querySelectorAll(".work-animate"),
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section id="work" className="section-padding">
+    <section id="work" className="work-section section-padding" ref={sectionRef}>
       <div className="section-container">
-        <TitleHeader
-          label="Portfolio Showcase"
-          title="Selected Work & Client Projects"
-          subtitle="Scroll to flip cards and explore reels, social creatives, and video edits crafted for real brands."
-        />
-
-        {featured && (
-          <div className="mb-8">
-            <FlipProjectCard
-              project={featured}
-              index={0}
-              featured
-              onWatch={setActiveProject}
-            />
+        {/* Header */}
+        <div className="work-animate work-header">
+          <div className="work-header-top">
+            <div>
+              <span className="section-label">Portfolio</span>
+              <h2 className="work-title">
+                Client <span className="gradient-text">Showcase</span>
+              </h2>
+            </div>
+            <div className="work-stats-pill">
+              <span>
+                <strong>{companies.length}</strong> brands
+              </span>
+              <span className="work-stats-dot" />
+              <span>
+                <strong>{totalProjects}</strong> pieces
+              </span>
+            </div>
           </div>
-        )}
+          <p className="work-subtitle">
+            Graphic design posts & video reels — pick a category to open the
+            gallery.
+          </p>
+          <a
+            href={driveFolderUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="work-drive-btn"
+          >
+            Browse full portfolio on Drive ↗
+          </a>
+        </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {others.map((project, i) => (
-            <FlipProjectCard
-              key={project.id}
-              project={project}
-              index={i + 1}
-              onWatch={setActiveProject}
+        {/* 2 × 2 grid */}
+        <div className="work-animate work-grid">
+          {companies.map((company, i) => (
+            <WorkProjectTile
+              key={company.id}
+              company={company}
+              index={i}
+              onOpenCategory={(c, id) => setGallery({ company: c, categoryId: id })}
             />
           ))}
         </div>
-
-        <p className="mt-8 text-center text-sm text-muted">
-          Drop MP4 reels into{" "}
-          <code className="text-accent">public/work/[client]/reel.mp4</code> to
-          replace placeholders from Google Drive.
-        </p>
       </div>
 
-      {activeProject && (
-        <VideoModal
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
+      {gallery && (
+        <WorkGalleryModal
+          company={gallery.company}
+          initialCategoryId={gallery.categoryId}
+          onClose={() => setGallery(null)}
         />
       )}
     </section>
