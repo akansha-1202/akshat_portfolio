@@ -348,10 +348,14 @@ export const experience = [
 export const toolkit = [
   {
     category: "Design",
+    icon: "🎨",
+    description: "Visual identity, layouts, and polished static creatives.",
     tools: ["Canva", "Adobe Photoshop", "Branding", "Infographics"],
   },
   {
     category: "Video & Motion",
+    icon: "🎬",
+    description: "Editing, animation, and motion for social and YouTube.",
     tools: [
       "CapCut",
       "Adobe Premiere Pro",
@@ -361,6 +365,8 @@ export const toolkit = [
   },
   {
     category: "Marketing & AI",
+    icon: "📈",
+    description: "Ad creatives, content strategy, and AI-powered video.",
     tools: [
       "Meta Ads Creatives",
       "AI Video Creator",
