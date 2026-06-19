@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { projects } from "@/app/constants";
-import TitleHeader from "@/app/components/TitleHeader";
-import FlipProjectCard from "@/app/components/FlipProjectCard";
-import VideoModal from "@/app/components/VideoModal";
+import TitleHeader from "@/app/components/TitleHeader.jsx";
+import FlipProjectCard from "@/app/components/FlipProjectCard.jsx";
+import VideoModal from "@/app/components/VideoModal.jsx";
 
 export default function WorkShowcase() {
   const [activeProject, setActiveProject] = useState(null);

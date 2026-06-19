@@ -92,12 +92,21 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex gap-4">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href={`mailto:${profile.email}`}
               className="text-sm text-muted transition-colors hover:text-accent"
             >
               {profile.email}
+            </a>
+            <span className="text-border">·</span>
+            <a
+              href={profile.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted transition-colors hover:text-accent"
+            >
+              LinkedIn
             </a>
           </div>
         </div>

@@ -28,8 +28,9 @@ export const metadata = {
   openGraph: {
     title: "Akshat Verma | Graphic Designer & Video Editor",
     description:
-      "Performance-focused creatives for social media, Meta ads, and video storytelling.",
+      "Helping brands grow through design-driven strategy, creative storytelling, and Meta ad creatives.",
     type: "website",
+    url: "https://www.linkedin.com/in/akshatverm-gd-ve/",
   },
 };
 

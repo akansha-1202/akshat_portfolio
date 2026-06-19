@@ -1,18 +1,18 @@
 export const profile = {
   name: "Akshat Verma",
-  title: "Graphic Designer & Video Editor",
-  location: "Lucknow, Uttar Pradesh",
+  title: "Graphic Designer, Video Editor & Digital Marketer",
+  location: "Lucknow, Uttar Pradesh, India",
   email: "akshatv0019@gmail.com",
   phone: "+91 9565072333",
   whatsapp: "919565072333",
   tagline:
-    "Performance-focused creatives for social media, Meta ads, and video storytelling.",
-  bio: "I am a performance-focused Graphic Designer and Video Editor with hands-on experience creating visual creatives for social media and Meta (Facebook & Instagram) ad campaigns, primarily in real estate and digital branding. My work combines audience psychology, platform guidelines, and marketing objectives to deliver results.",
+    "Helping brands grow through design-driven strategy, creative storytelling, and scroll-stopping Meta ad creatives.",
+  bio: "Creative and passionate Graphic Designer, Video Editor, and Digital Marketer with hands-on experience in designing, branding, and digital promotions. I started at Pathshala Institute creating impactful designs and managing social media, currently edit for The Menta YouTube channel, and freelance with Anon India on AI-powered ad videos and real estate Meta creatives. I believe in continuous learning — ensuring my work always matches the latest trends and audience expectations.",
   languages: ["Hindi", "English"],
   socials: {
+    linkedin: "https://www.linkedin.com/in/akshatverm-gd-ve/",
     instagram: "#",
     behance: "#",
-    linkedin: "#",
   },
 };
 
@@ -26,18 +26,18 @@ export const navLinks = [
 export const stats = [
   { value: 3, suffix: "+", label: "Clients Served" },
   { value: 50, suffix: "+", label: "Creatives Delivered" },
-  { value: 2, suffix: "+", label: "Years Experience" },
-  { value: 6, suffix: "+", label: "Tools Mastered" },
+  { value: 2, suffix: "", label: "Years Experience" },
+  { value: 8, suffix: "+", label: "Tools Mastered" },
 ];
 
 export const projects = [
   {
     id: "anon-india",
     title: "Anon India",
-    subtitle: "Real Estate & Branding Campaigns",
+    subtitle: "Real Estate Meta Ads & Branding",
     description:
-      "Social media creatives and AI-powered promotional videos for real estate, interior design, and construction brands — optimized for Meta lead generation.",
-    tags: ["Static Ads", "Reels", "AI Video"],
+      "High-conversion graphic designs and video ad creatives for Meta (Facebook & Instagram) — project launches, event promotions, and lead-generation campaigns for real estate brands.",
+    tags: ["Meta Ads", "Static Ads", "AI Video"],
     poster: "/work/anon-india/poster.svg",
     video: "/work/anon-india/reel.mp4",
     featured: true,
@@ -48,8 +48,8 @@ export const projects = [
     title: "Pathshala Institute",
     subtitle: "Education Brand Creatives",
     description:
-      "Designed social media posts and edited promotional reels for Pathshala Institute's digital presence and student outreach campaigns.",
-    tags: ["Social Posts", "Reels"],
+      "Marketing creatives including posters, banners, social graphics, and infographics — plus educational and promotional videos with motion graphics for batch and event promotions.",
+    tags: ["Social Posts", "Reels", "Motion Graphics"],
     poster: "/work/pathshala/poster.svg",
     video: "/work/pathshala/reel.mp4",
     featured: false,
@@ -58,10 +58,10 @@ export const projects = [
   {
     id: "the-menta",
     title: "The Menta",
-    subtitle: "YouTube & Learning Content",
+    subtitle: "YouTube, Animation & Learning Content",
     description:
-      "Edited YouTube videos with clear storytelling and created structured, professional PPTs for video and learning content.",
-    tags: ["YouTube", "PPT Design"],
+      "Visually compelling designs, animated content, and YouTube edits for an education brand — reels, short videos, logos, brochures, and digital ads aligned with brand guidelines.",
+    tags: ["YouTube", "Animation", "Reels"],
     poster: "/work/the-menta/poster.svg",
     video: "/work/the-menta/reel.mp4",
     featured: false,
@@ -72,8 +72,8 @@ export const projects = [
     title: "Video Edit Collection",
     subtitle: "Reels & Promotional Edits",
     description:
-      "A curated collection of short-form reels and promotional video edits crafted for social platforms and brand storytelling.",
-    tags: ["Reels", "Promos", "Motion"],
+      "A curated collection of short-form reels, promotional videos, and AI-powered ad content crafted for social platforms and brand storytelling.",
+    tags: ["Reels", "Promos", "Ads Video"],
     poster: "/work/video-edit/poster.svg",
     video: "/work/video-edit/reel.mp4",
     featured: false,
@@ -86,50 +86,54 @@ export const services = [
     icon: "📱",
     title: "Social & Meta Ads",
     description:
-      "High-conversion static and video creatives for Facebook & Instagram campaigns — built for leads, launches, and event promotions.",
+      "Scroll-stopping static, carousel, and story creatives for Facebook & Instagram — built for leads, project launches, and event promotions in real estate and branding.",
   },
   {
     icon: "🎬",
     title: "Video Editing & Reels",
     description:
-      "YouTube edits, promotional reels, and short-form video content with engaging storytelling and platform-optimized pacing.",
+      "YouTube edits, promotional reels, motion graphics, and AI-powered ad videos with engaging storytelling and platform-optimized pacing.",
   },
   {
     icon: "✨",
-    title: "Brand & Presentation Design",
+    title: "Brand & Visual Design",
     description:
-      "Professional PPTs, launch visuals, and event promotion materials that align brand identity with marketing goals.",
+      "Logos, brochures, infographics, and campaign visuals that maintain brand consistency while driving digital marketing goals.",
   },
 ];
 
 export const experience = [
   {
     company: "Anon India",
-    role: "Graphic Designer & AI Video Creator",
+    role: "Freelance Graphic Designer & Ads Video Creator",
     period: "Nov 2025 – Present",
     responsibilities: [
-      "Designed social media creatives across real estate, interior design, and construction.",
-      "Created promotional and branding videos optimized for social platforms.",
-      "Built high-conversion static creatives and video ads for lead generation and event promotions.",
+      "Create high-conversion Meta ad creatives (static, carousel, story) for real estate lead generation.",
+      "Design social media posts, reels, project launch creatives, and event promotion campaigns.",
+      "Build video ad creatives optimized for Facebook & Instagram with branding-consistent, premium layouts.",
+      "Collaborate with the marketing team on audience psychology and platform-specific requirements.",
     ],
   },
   {
     company: "The Menta",
-    role: "PPT Creator & Video Editor",
+    role: "Graphic Designer, Video Editor & Animator",
     period: "May 2025 – Present",
     responsibilities: [
-      "Edited YouTube videos with clear, engaging storytelling.",
-      "Created structured, professional PPTs for video and learning content.",
-      "Graphic design for Hero to Zero Vibhu Sir (Sep 2025 – Present).",
+      "Edit YouTube videos, reels, and educational content with clear visual storytelling.",
+      "Develop animated content, logos, brochures, and digital ads for social media marketing.",
+      "Implement animation techniques to enhance marketing materials and brand campaigns.",
+      "Work in a fast-paced creative team focused on growth and innovation.",
     ],
   },
   {
     company: "Pathshala Institute",
     role: "Graphic Designer & Video Editor",
-    period: "Oct 2024 – Jun 2025",
+    period: "Oct 2024 – Dec 2025",
     responsibilities: [
-      "Created social media creatives for Pathshala Institute.",
-      "Edited promotional reels and short videos for digital outreach.",
+      "Designed posters, banners, social media graphics, and infographics for educational branding.",
+      "Edited educational and promotional videos using Premiere Pro and After Effects.",
+      "Created motion graphics to simplify complex educational concepts for digital platforms.",
+      "Managed social media presence and contributed to batch and event promotions.",
     ],
   },
 ];
@@ -137,19 +141,36 @@ export const experience = [
 export const toolkit = [
   {
     category: "Design",
-    tools: ["Canva", "Adobe Photoshop"],
+    tools: ["Canva", "Adobe Photoshop", "Branding", "Infographics"],
   },
   {
     category: "Video & Motion",
-    tools: ["CapCut", "Adobe Premiere Pro", "Adobe After Effects"],
+    tools: [
+      "CapCut",
+      "Adobe Premiere Pro",
+      "Adobe After Effects",
+      "Motion Graphics",
+    ],
   },
   {
-    category: "AI & Marketing",
-    tools: ["AI Video Creator", "Meta Ads Creatives"],
+    category: "Marketing & AI",
+    tools: [
+      "Meta Ads Creatives",
+      "AI Video Creator",
+      "Content Strategy",
+      "Social Media Marketing",
+    ],
   },
 ];
 
 export const education = [
+  {
+    title: "Bachelor of Arts — History",
+    institution: "University of Lucknow",
+    period: "2022 – Present",
+    description:
+      "Pursuing BA while building a career in graphic design, video editing, and digital marketing.",
+  },
   {
     title: "Computer Operator & Programming Assistant (COPA)",
     institution: "Information Technology Institute (ITI)",
@@ -157,21 +178,28 @@ export const education = [
     description: "NSQF certification in computer operations and programming.",
   },
   {
+    title: "Digital Entrepreneurship Ka Mahakumbh",
+    institution: "Zinmatt",
+    period: "Jul 2025",
+    description:
+      "10-day intensive program on digital entrepreneurship and online earning strategies.",
+  },
+  {
     title: "AI Powered Digital Marketing with SEO",
     institution: "Pankaj Kumar SEO",
     period: "Completed",
     description:
-      "Training in AI-driven digital marketing strategies and search engine optimization.",
+      "Training in AI-driven digital marketing, content marketing, and search engine optimization.",
   },
 ];
 
 export const marqueeItems = [
   "Design",
   "Edit",
-  "Ads",
+  "Meta Ads",
   "Reels",
   "Branding",
-  "Motion",
-  "Social Media",
+  "Motion Graphics",
+  "Real Estate",
   "YouTube",
 ];

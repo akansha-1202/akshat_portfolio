@@ -98,25 +98,35 @@ export default function Contact() {
               </li>
             </ul>
 
-            <div className="mt-8 flex gap-4">
-              <a
-                href={profile.socials.instagram}
-                className="text-sm text-muted transition-colors hover:text-accent"
-              >
-                Instagram
-              </a>
-              <a
-                href={profile.socials.behance}
-                className="text-sm text-muted transition-colors hover:text-accent"
-              >
-                Behance
-              </a>
+            <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href={profile.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm text-muted transition-colors hover:text-accent"
               >
                 LinkedIn
               </a>
+              {profile.socials.instagram !== "#" && (
+                <a
+                  href={profile.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted transition-colors hover:text-accent"
+                >
+                  Instagram
+                </a>
+              )}
+              {profile.socials.behance !== "#" && (
+                <a
+                  href={profile.socials.behance}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted transition-colors hover:text-accent"
+                >
+                  Behance
+                </a>
+              )}
             </div>
           </GlowCard>
 

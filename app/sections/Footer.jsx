@@ -17,13 +17,9 @@ export default function Footer() {
             {profile.email}
           </a>
           <a
-            href={profile.socials.instagram}
-            className="text-muted transition-colors hover:text-accent"
-          >
-            Instagram
-          </a>
-          <a
             href={profile.socials.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted transition-colors hover:text-accent"
           >
             LinkedIn
