@@ -13,6 +13,7 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
   const activeCategory = company.categories.find(
     (c) => c.id === activeCategoryId
   );
+  const itemCount = activeCategory?.items?.length || 0;
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -31,41 +32,88 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
         onClick={onClose}
         role="dialog"
         aria-modal="true"
+        aria-labelledby="work-modal-title"
       >
         <div className="work-modal" onClick={(e) => e.stopPropagation()}>
+          <div className="work-modal-glow" aria-hidden="true" />
+
           {/* Header */}
           <div className="work-modal-header">
-            <div>
-              <p className="work-modal-brand">{company.title}</p>
-              <h3 className="work-modal-heading">{activeCategory?.label}</h3>
+            <div className="work-modal-header-main">
+              <div className="work-modal-header-meta">
+                <span className="work-modal-brand">{company.title}</span>
+                {company.featured && (
+                  <span className="work-modal-featured">Featured</span>
+                )}
+              </div>
+              <h3 id="work-modal-title" className="work-modal-heading">
+                {activeCategory?.label}
+              </h3>
+              {activeCategory?.description && (
+                <p className="work-modal-desc">{activeCategory.description}</p>
+              )}
+              {itemCount > 0 && (
+                <p className="work-modal-count">
+                  {itemCount} {itemCount === 1 ? "piece" : "pieces"}
+                </p>
+              )}
             </div>
-            <button type="button" onClick={onClose} className="work-modal-close">
-              ✕
+            <button
+              type="button"
+              onClick={onClose}
+              className="work-modal-close"
+              aria-label="Close gallery"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 1l12 12M13 1L1 13"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
             </button>
           </div>
 
           {/* Category tabs */}
-          <div className="work-modal-tabs">
-            {company.categories.map((cat) => (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActiveCategoryId(cat.id)}
-                className={`work-modal-tab ${
-                  activeCategoryId === cat.id ? "work-modal-tab-active" : ""
-                }`}
-              >
-                {cat.icon} {cat.label}
-              </button>
-            ))}
+          <div className="work-modal-tabs-wrap">
+            <div className="work-modal-tabs" role="tablist">
+              {company.categories.map((cat) => {
+                const count = cat.items?.length || 0;
+                const isActive = activeCategoryId === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveCategoryId(cat.id)}
+                    className={`work-modal-tab ${isActive ? "work-modal-tab-active" : ""}`}
+                  >
+                    <span className="work-modal-tab-icon">{cat.icon}</span>
+                    <span className="work-modal-tab-label">{cat.label}</span>
+                    {count > 0 && (
+                      <span className="work-modal-tab-count">{count}</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Items */}
           <div className="work-modal-body">
-            {activeCategory?.items?.length > 0 ? (
+            {itemCount > 0 ? (
               <div className="work-modal-grid">
                 {activeCategory.items.map((item) => {
                   const thumb = getDriveThumbnailUrl(item.driveFileId, 600);
+                  const isVideo = item.type === "video";
                   return (
                     <button
                       key={item.id || item.title}
@@ -79,13 +127,28 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
                             src={thumb}
                             alt={item.title}
                             referrerPolicy="no-referrer"
+                            loading="lazy"
                           />
                         ) : (
-                          <span className="text-3xl">{activeCategory.icon}</span>
+                          <span className="work-modal-item-fallback">
+                            {activeCategory.icon}
+                          </span>
                         )}
-                        {item.type === "video" && (
-                          <span className="work-modal-play">▶</span>
+                        <div className="work-modal-item-overlay" aria-hidden="true">
+                          <span className="work-modal-item-view">
+                            {isVideo ? "Play reel" : "View"}
+                          </span>
+                        </div>
+                        {isVideo && (
+                          <span className="work-modal-play" aria-hidden="true">
+                            <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor">
+                              <path d="M0 0v12l10-6L0 0z" />
+                            </svg>
+                          </span>
                         )}
+                        <span className="work-modal-item-type">
+                          {isVideo ? "Reel" : item.type === "pdf" ? "PDF" : "Post"}
+                        </span>
                       </div>
                       <p className="work-modal-item-title">{item.title}</p>
                     </button>
@@ -94,31 +157,43 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
               </div>
             ) : (
               <div className="work-modal-empty">
-                <span className="text-4xl">{activeCategory?.icon}</span>
-                <p>No work added yet</p>
+                <div className="work-modal-empty-icon">{activeCategory?.icon}</div>
+                <p className="work-modal-empty-title">Nothing here yet</p>
+                <p className="work-modal-empty-desc">
+                  Work for this category will appear here once added.
+                </p>
                 {activeCategory?.driveFolderId && (
                   <a
                     href={getDriveFolderUrl(activeCategory.driveFolderId)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary mt-4 text-sm"
+                    className="btn-outline work-modal-empty-btn"
                   >
-                    Open Drive Folder
+                    Open Drive Folder ↗
                   </a>
                 )}
               </div>
             )}
           </div>
 
-          {activeCategory?.driveFolderId && activeCategory?.items?.length > 0 && (
+          {activeCategory?.driveFolderId && itemCount > 0 && (
             <div className="work-modal-footer">
               <a
                 href={getDriveFolderUrl(activeCategory.driveFolderId)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-accent hover:underline"
+                className="work-modal-drive-link"
               >
-                View all in Google Drive ↗
+                View all in Google Drive
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 10L10 2M10 2H4M10 2v6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </a>
             </div>
           )}
