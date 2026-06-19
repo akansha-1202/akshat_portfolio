@@ -383,12 +383,16 @@ export const education = [
     period: "2022 – Present",
     description:
       "Pursuing BA while building a career in graphic design, video editing, and digital marketing.",
+    icon: "🎓",
+    type: "Degree",
   },
   {
     title: "Computer Operator & Programming Assistant (COPA)",
     institution: "Information Technology Institute (ITI)",
     period: "Sep 2024",
     description: "NSQF certification in computer operations and programming.",
+    icon: "💻",
+    type: "Certification",
   },
   {
     title: "Digital Entrepreneurship Ka Mahakumbh",
@@ -396,6 +400,8 @@ export const education = [
     period: "Jul 2025",
     description:
       "10-day intensive program on digital entrepreneurship and online earning strategies.",
+    icon: "🚀",
+    type: "Program",
   },
   {
     title: "AI Powered Digital Marketing with SEO",
@@ -403,6 +409,8 @@ export const education = [
     period: "Completed",
     description:
       "Training in AI-driven digital marketing, content marketing, and search engine optimization.",
+    icon: "🤖",
+    type: "Certification",
   },
 ];
 
