@@ -132,23 +132,6 @@ export default function Hero() {
             </div>
           ))}
         </div>
-
-        <div className="grid grid-cols-2 gap-3 md:hidden">
-          {companies.slice(0, 4).map((project) => (
-            <div
-              key={project.id}
-              className="relative aspect-[3/4] overflow-hidden rounded-xl border border-border"
-            >
-              <Image
-                src={project.poster}
-                alt={project.title}
-                fill
-                className="object-cover"
-                sizes="50vw"
-              />
-            </div>
-          ))}
-        </div>
       </div>
 
       <div className="section-container mt-20 grid grid-cols-2 gap-8 md:grid-cols-4">
