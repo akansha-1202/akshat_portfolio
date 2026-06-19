@@ -291,18 +291,21 @@ export const services = [
     title: "Social & Meta Ads",
     description:
       "Scroll-stopping static, carousel, and story creatives for Facebook & Instagram — built for leads, project launches, and event promotions in real estate and branding.",
+    highlights: ["Static & carousel ads", "Story creatives", "Lead-gen campaigns"],
   },
   {
     icon: "🎬",
     title: "Video Editing & Reels",
     description:
       "YouTube edits, promotional reels, motion graphics, and AI-powered ad videos with engaging storytelling and platform-optimized pacing.",
+    highlights: ["YouTube & reels", "Motion graphics", "AI ad videos"],
   },
   {
     icon: "✨",
     title: "Brand & Visual Design",
     description:
       "Logos, brochures, infographics, and campaign visuals that maintain brand consistency while driving digital marketing goals.",
+    highlights: ["Logos & brochures", "Infographics", "Campaign visuals"],
   },
 ];
 
