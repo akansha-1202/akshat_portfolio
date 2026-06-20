@@ -4,7 +4,7 @@ export const profile = {
   location: "Lucknow, Uttar Pradesh, India",
   email: "akshatv0019@gmail.com",
   phone: "+91 9565072333",
-  whatsapp: "919565072333",
+  whatsapp: "916388600616",
   tagline:
     "Helping brands grow through design-driven strategy, creative storytelling, and scroll-stopping Meta ad creatives.",
   bio: "Creative and passionate Graphic Designer, Video Editor, and Digital Marketer with hands-on experience in designing, branding, and digital promotions. I started at Pathshala Institute creating impactful designs and managing social media, currently edit for The Menta YouTube channel, and freelance with Anon India on AI-powered ad videos and real estate Meta creatives. I believe in continuous learning — ensuring my work always matches the latest trends and audience expectations.",
