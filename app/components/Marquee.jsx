@@ -9,7 +9,8 @@ export default function Marquee() {
         {items.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="flex shrink-0 items-center gap-12 text-sm font-medium uppercase tracking-[0.25em] text-muted"
+            className="flex shrink-0 items-center gap-12 text-sm font-semibold uppercase tracking-[0.28em] text-muted"
+            style={{ fontFamily: "var(--font-display)" }}
           >
             {item}
             <span className="text-accent">✦</span>

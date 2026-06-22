@@ -68,11 +68,16 @@ export default function Hero() {
           <p className="section-label">Creative Portfolio</p>
           <h1
             className="display-heading mt-2"
-            style={{ fontFamily: "var(--font-syne)" }}
+            style={{ fontFamily: "var(--font-display)" }}
           >
             {profile.name}
           </h1>
-          <p className="mt-3 text-lg text-accent md:text-xl">{profile.title}</p>
+          <p
+            className="mt-3 text-lg font-medium text-accent md:text-xl"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {profile.title}
+          </p>
           <p className="mt-2 text-sm text-muted">{profile.location}</p>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted md:text-lg">
             {profile.tagline}

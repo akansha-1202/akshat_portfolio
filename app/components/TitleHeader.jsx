@@ -4,7 +4,7 @@ export default function TitleHeader({ label, title, subtitle, className = "" }) 
       <span className="section-label">{label}</span>
       <h2
         className="display-heading mt-2 max-w-3xl"
-        style={{ fontFamily: "var(--font-syne)" }}
+        style={{ fontFamily: "var(--font-display)" }}
       >
         {title}
       </h2>

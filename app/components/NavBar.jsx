@@ -89,7 +89,7 @@ export default function NavBar() {
                     </span>
                     <span
                       className="flex-1 text-base font-bold text-foreground"
-                      style={{ fontFamily: "var(--font-syne)" }}
+                      style={{ fontFamily: "var(--font-display)" }}
                     >
                       {link.label}
                     </span>
@@ -126,7 +126,7 @@ export default function NavBar() {
             <a
               href="#"
               className="text-lg font-bold tracking-tight md:text-xl"
-              style={{ fontFamily: "var(--font-syne)" }}
+              style={{ fontFamily: "var(--font-display)" }}
               onClick={closeMenu}
             >
               {profile.name.split(" ")[0]}

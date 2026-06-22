@@ -36,7 +36,7 @@ export default function AnimatedCounter({ value, suffix = "", label }) {
     <div ref={containerRef} className="text-center">
       <p
         className="text-3xl font-bold md:text-4xl"
-        style={{ fontFamily: "var(--font-syne)" }}
+        style={{ fontFamily: "var(--font-display)" }}
       >
         <span ref={counterRef}>0</span>
         <span className="text-accent">{suffix}</span>
