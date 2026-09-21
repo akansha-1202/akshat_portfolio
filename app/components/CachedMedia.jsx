@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { resolveCachedVideoSrc } from "@/app/lib/cloudinary";
 
 export function MediaSkeleton({ className = "" }) {
   return (
@@ -75,9 +76,43 @@ export function CachedVideo({
   loop = false,
 }) {
   const [status, setStatus] = useState(src ? "loading" : "error");
+  const [playbackSrc, setPlaybackSrc] = useState(src);
+  const objectUrlRef = useRef(null);
 
   useEffect(() => {
-    setStatus(src ? "loading" : "error");
+    let cancelled = false;
+
+    if (!src) {
+      setStatus("error");
+      setPlaybackSrc(null);
+      return undefined;
+    }
+
+    setStatus("loading");
+    setPlaybackSrc(src);
+
+    resolveCachedVideoSrc(src).then((resolved) => {
+      if (cancelled || !resolved) return;
+
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+        objectUrlRef.current = null;
+      }
+
+      if (resolved.startsWith("blob:")) {
+        objectUrlRef.current = resolved;
+      }
+
+      setPlaybackSrc(resolved);
+    });
+
+    return () => {
+      cancelled = true;
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+        objectUrlRef.current = null;
+      }
+    };
   }, [src]);
 
   if (!src) return <MediaSkeleton className={wrapperClassName || className} />;
@@ -86,16 +121,17 @@ export function CachedVideo({
     <div className={`media-frame media-frame-video ${wrapperClassName}`}>
       {status === "loading" && <MediaSkeleton />}
       <video
-        key={src}
-        src={src}
+        key={playbackSrc || src}
+        src={playbackSrc || src}
         poster={poster || undefined}
         title={title}
         controls={controls}
         playsInline
-        preload="metadata"
+        preload="auto"
         autoPlay={autoPlay}
         muted={muted}
         loop={loop}
+        crossOrigin="anonymous"
         className={`media-frame-asset ${className} ${
           status === "loaded" ? "is-loaded" : "is-loading"
         }`}
