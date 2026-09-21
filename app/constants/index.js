@@ -243,16 +243,16 @@ export const experience = [
       "Create AI-powered video content and brand visuals that stay consistent with client identity and campaign goals.",
     ],
   },
-  {
-    company: "AI Content Creation",
-    role: "AI Content Creator",
-    period: "2025 – Present",
-    responsibilities: [
-      "Produce AI-powered ad videos and generative motion pieces for product promos, brand storytelling, and social campaigns.",
-      "Blend AI tools with hands-on editing to deliver polished short-form creatives optimized for Instagram, YouTube, and Meta ads.",
-      "Turn briefs and creative assets into scroll-stopping vertical (9:16) content with strong pacing, sound design, and visual continuity.",
-    ],
-  },
+  // {
+  //   company: "AI Content Creation",
+  //   role: "AI Content Creator",
+  //   period: "2025 – Present",
+  //   responsibilities: [
+  //     "Produce AI-powered ad videos and generative motion pieces for product promos, brand storytelling, and social campaigns.",
+  //     "Blend AI tools with hands-on editing to deliver polished short-form creatives optimized for Instagram, YouTube, and Meta ads.",
+  //     "Turn briefs and creative assets into scroll-stopping vertical (9:16) content with strong pacing, sound design, and visual continuity.",
+  //   ],
+  // },
   {
     company: "The Menta",
     role: "Video Editor & Presentation Designer",
