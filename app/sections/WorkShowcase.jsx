@@ -54,7 +54,7 @@ export default function WorkShowcase() {
             </div>
             <div className="work-stats-pill">
               <span>
-                <strong>{companies.length}</strong> brands
+                <strong>{companies.length}</strong> sections
               </span>
               <span className="work-stats-dot" />
               <span>
@@ -63,8 +63,8 @@ export default function WorkShowcase() {
             </div>
           </div>
           <p className="work-subtitle">
-            Graphic design posts & video reels — pick a category to open the
-            gallery.
+            AI content, edits, and brand creatives — three collections per row.
+            Click any panel to open the gallery.
           </p>
           <a
             href={driveFolderUrl}
@@ -76,7 +76,7 @@ export default function WorkShowcase() {
           </a>
         </div>
 
-        {/* 2 × 2 grid */}
+        {/* 2 per row media panels */}
         <div className="work-animate work-grid">
           {companies.map((company, i) => (
             <WorkProjectTile

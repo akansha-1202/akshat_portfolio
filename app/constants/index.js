@@ -34,53 +34,85 @@ export const driveFolderUrl =
   "https://drive.google.com/drive/folders/1Ia8W1MwLhpN3DGmSyk9xv-vAcONBAlJC";
 
 /**
- * Each company has 2 work categories (matches Google Drive subfolders).
- * Add driveFolderId per category + driveFileId per item — no download needed.
+ * Five work sections — matches Cloudinary folders.
+ * Order: ai_content → editing → anon_india → pathshala → the_menta
  */
 export const companies = [
   {
-    id: "anon-india",
+    id: "ai_content",
+    title: "AI Content",
+    subtitle: "AI Ads & Motion",
+    description: "AI-powered ad videos and creative motion pieces.",
+    poster: "/work/ai-content/poster.svg",
+    featured: true,
+    gradient: "from-rose-600/40 to-orange-900/40",
+    categories: [
+      {
+        id: "videos",
+        label: "Videos",
+        icon: "✨",
+        kind: "videos",
+        description: "AI video ads and generative creatives.",
+        items: [
+          { id: "ai-1", title: "Penguin Anon India", type: "video", publicId: "Penguin_anon_india.mp4" },
+          { id: "ai-2", title: "Moral Story", type: "video", publicId: "Moral_story.mp4" },
+          { id: "ai-3", title: "Happy Ganesh", type: "video", publicId: "Happy_ganesh.mp4" },
+          { id: "ai-4", title: "Ajewels Product Ad", type: "video", publicId: "Ajewels_Product_ads_video_demo.mp4" },
+          { id: "ai-5", title: "Chandeliers & Pendant Lights", type: "video", publicId: "Chandeliers_Pendant_Lights.mp4" },
+          { id: "ai-6", title: "HID Promo", type: "video", publicId: "HID.mp4" },
+          { id: "ai-7", title: "BNF Promo", type: "video", publicId: "bnf3.mp4" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "editing",
+    title: "Editing",
+    subtitle: "Reels & Promo Edits",
+    description: "Short-form reels and promotional video edits across brands.",
+    poster: "/work/video-edit/poster.svg",
+    featured: false,
+    gradient: "from-purple-600/40 to-violet-900/40",
+    categories: [
+      {
+        id: "videos",
+        label: "Videos",
+        icon: "✂️",
+        kind: "videos",
+        description: "Reels, cuts, and campaign highlight edits.",
+        items: [
+          { id: "edit-1", title: "Ganesh Chaturthi Reel", type: "video", publicId: "Ganesh_chaturthi.mp4" },
+          { id: "edit-2", title: "Vlogs Edit", type: "video", publicId: "vlogs.mp4" },
+          { id: "edit-3", title: "Sumit Sales Reel", type: "video", publicId: "Sumit_Sales_1.mp4" },
+          { id: "edit-4", title: "Sumit — Cut 2", type: "video", publicId: "Sumit2.mp4" },
+          { id: "edit-5", title: "Indu Lights Promo", type: "video", publicId: "Indu_lights1.mp4" },
+          { id: "edit-6", title: "Realtor Campaign", type: "video", publicId: "Realtor.mp4" },
+          { id: "edit-7", title: "Akeel — Promo Edit", type: "video", publicId: "Akeel.mp4" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "anon_india",
     title: "Anon India",
     subtitle: "Real Estate Meta Ads & Branding",
-    description:
-      "High-conversion graphic designs and video ad creatives for Meta campaigns — project launches, event promotions, and lead-generation for real estate brands.",
+    description: "High-conversion graphic designs and video creatives for Meta campaigns.",
     poster: "/work/anon-india/poster.svg",
-    featured: true,
+    featured: false,
     gradient: "from-orange-600/40 to-red-900/40",
     categories: [
       {
-        id: "graphic-design",
-        label: "Graphic Design",
+        id: "images",
+        label: "Images",
         icon: "🎨",
         kind: "posts",
-        description:
-          "Static ads, social posts, carousels, and branding creatives for real estate and construction campaigns.",
-        driveFolderId: "1akqLSzE-j3l6RgB6A7KT9D-ArHqK5aeq",
+        description: "Static ads, social posts, and branding creatives.",
         items: [
-          {
-            id: "anon-post-1",
-            title: "IRIS Broadway — Commercial Ad",
-            type: "image",
-            driveFileId: "1w2yVR5u6hHM9kn-uAeJpF0baD1-HZ2ES",
-          },
-          {
-            id: "anon-post-2",
-            title: "IRIS Broadway — Commercial Ad",
-            type: "image",
-            driveFileId: "1f3prTzmCn140J8pYnrI7Wr3uTAUu5sqf",
-          },
-          {
-            id: "anon-post-3",
-            title: "IRIS Broadway — Commercial Ad",
-            type: "image",
-            driveFileId: "1bAlaHat7G-QciE2IadwoIc66vBhyxoD7",
-          },
-          {
-            id: "anon-post-4",
-            title: "IRIS Broadway — Commercial Ad",
-            type: "image",
-            driveFileId: "1K9T2NyeWQi61Jdoz9DdyO52QowJZl5UT",
-          },
+          { id: "anon-img-1", title: "IRIS Broadway — Commercial Ad", type: "image", publicId: "IRIS_BROADWAY.jpg" },
+          { id: "anon-img-2", title: "IRIS Broadway — Brand Visual", type: "image", publicId: "IRIS_Broadway.jpg" },
+          { id: "anon-img-3", title: "Interior Design Post", type: "image", publicId: "Anon_India_Interior_Design_Instagram_Post_1.png" },
+          { id: "anon-img-4", title: "Campaign Creative", type: "image", publicId: "1.png" },
+          { id: "anon-img-5", title: "IRIS Broadway — Promo Graphic", type: "image", publicId: "IRIS_BROADWAY.png" },
         ],
       },
       {
@@ -88,201 +120,89 @@ export const companies = [
         label: "Videos",
         icon: "🎬",
         kind: "videos",
-        description:
-          "Promotional reels, video ads, and AI-powered ad content optimized for Facebook & Instagram.",
-        driveFolderId: "1tHXrL2H2QxrNjMIHGbtohiZccWM6kisb",
+        description: "Promotional reels and brand video ads.",
         items: [
-          {
-            id: "anon-reel-1",
-            title: "Anon India — Promo Reel",
-            type: "video",
-            driveFileId: "1syFUa7ci-xCiwF83dUD5fFAobXJGtbRd",
-          },
-          {
-            id: "anon-reel-2",
-            title: "Anon India — Promo Reel",
-            type: "video",
-            driveFileId: "1ujZV_P4-WG7vYqM9rsTonhSXZowlZXwR",
-          },
+          { id: "anon-vid-1", title: "Anon India — Awards Reel", type: "video", publicId: "Aonon_india_Awards.mp4" },
         ],
       },
     ],
   },
   {
     id: "pathshala",
-    title: "Pathshala Institute",
+    title: "Pathshala",
     subtitle: "Education Brand Creatives",
-    description:
-      "Marketing creatives and promotional videos for an education institute — posters, social posts, reels, and motion graphics.",
+    description: "Posters, social posts, and promotional videos for Pathshala Institute.",
     poster: "/work/pathshala/poster.svg",
     featured: false,
     gradient: "from-blue-600/40 to-indigo-900/40",
     categories: [
       {
-        id: "post",
-        label: "Post",
+        id: "images",
+        label: "Images",
         icon: "📱",
         kind: "posts",
-        description:
-          "Social media posts, posters, banners, and infographics for student outreach and batch promotions.",
-        driveFolderId: "18OM6gjPU44Sv7bdwB5fxjfeuagO_oByZ",
+        description: "Social posts, posters, and campaign graphics.",
         items: [
+          { id: "path-img-1", title: "Institute Poster", type: "image", publicId: "1.jpg" },
+          { id: "path-img-2", title: "Admission Open 2025", type: "image", publicId: "ADMISSION_OPEN_2025_8.jpg" },
+          { id: "path-img-3", title: "Fun Fact Creative", type: "image", publicId: "FUN_FACT_1.jpg" },
+          { id: "path-img-4", title: "Invitation Card", type: "image", publicId: "Invetation_Card.jpg" },
+          { id: "path-img-5", title: "Brand Post", type: "image", publicId: "Pathshala_2.jpg" },
           {
-            id: "pathshala-post-1",
-            title: "Pathshala Institute — Poster",
+            id: "path-img-6",
+            title: "Campus Location",
             type: "image",
-            driveFileId: "1886adj_Zz41whWPcUXUkqcTzk79sCdoA",
+            publicId:
+              "Near_lekhraj_Metro_Station_M-31_Sanjay_gandhi_puram_Faizabad_road_Indiranagar_Lucknow.jpg",
           },
           {
-            id: "pathshala-post-2",
-            title: "Pathshala Institute — Poster",
+            id: "path-img-7",
+            title: "Lifestyle Ad",
             type: "image",
-            driveFileId: "1pTuXq1KZjik8iTps54J0VG2dFr9SoQWO",
+            publicId:
+              "a-bright-and-aspirational-lifestyle-adve_xpYuAQPOShGg1n8iWKAhhQ_1284qFwdQquM1IL_qUDGiA.jpeg",
           },
-          {
-            id: "pathshala-post-3",
-            title: "Pathshala Institute — Poster",
-            type: "image",
-            driveFileId: "1MIVn6NzxndV-b_D6z2HKq9sWvlmU7pe0",
-          },
-          {
-            id: "pathshala-post-4",
-            title: "Pathshala Institute — Poster",
-            type: "image",
-            driveFileId: "1SMGJ1vZEO4H8PyPjLGsxdzPGvovrjEvT",
-          }
+          { id: "path-img-8", title: "Campaign Creative", type: "image", publicId: "10.jpg" },
         ],
       },
       {
-        id: "video",
-        label: "Video",
+        id: "videos",
+        label: "Videos",
         icon: "🎬",
         kind: "videos",
-        description:
-          "Educational and promotional reels edited for YouTube and social platforms.",
-        driveFolderId: "12yZU-pT5-uB3mT8107LFWrxC4dT50J0R",
+        description: "Promotional and educational reels.",
         items: [
-          {
-            id: "pathshala-video-1",
-            title: "Pathshala Institute — Video",
-            type: "video",
-            driveFileId: "1kYBboLy2-2EfBPY3c7tjP22QicQBQq3m",
-          }
+          { id: "path-vid-1", title: "Address Reel", type: "video", publicId: "Address.mp4" },
         ],
       },
     ],
   },
   {
-    id: "the-menta",
+    id: "the_menta",
     title: "The Menta",
-    subtitle: "YouTube, Animation & Learning Content",
-    description:
-      "Design, animation, and video editing for an education brand — PPTs, YouTube content, reels, and digital ads.",
+    subtitle: "YouTube & Learning Content",
+    description: "Presentation decks and learning visuals for The Menta education brand.",
     poster: "/work/the-menta/poster.svg",
     featured: false,
     gradient: "from-emerald-600/40 to-teal-900/40",
     categories: [
       {
         id: "ppt",
-        label: "The Menta PPT",
+        label: "PPT",
         icon: "📊",
         kind: "ppt",
-        description:
-          "Structured presentation decks and learning slides for video and educational content.",
-        driveFolderId: "1fI2ejSITOVIef1PC6vw7qCrFV8E3DTS-",
+        description: "Presentation decks and learning slides.",
         items: [
-          {
-            id: "the-menta-ppt-1",
-            title: "The Menta PPT",
-            type: "ppt",
-            driveFileId: "1zxV2F0HlJFlXXNrXugbOPK87FZsyvKsZ",
-          },
-          {
-            id: "the-menta-ppt-2",
-            title: "The Menta PPT",
-            type: "ppt",
-            driveFileId: "1voY6mEA90ErzkmDMqBIRobHWsaGtXLm5",
-          },
-          {
-            id: "the-menta-ppt-3",
-            title: "The Menta PPT",
-            type: "ppt",
-            driveFileId: "1mQ5mgCmaCRtiBCyage4ACOV20g-LlFih",
-          },
-          {
-            id: "the-menta-ppt-4",
-            title: "The Menta PPT",
-            type: "ppt",
-            driveFileId: "1tUXc6dV6sPNGCrm2dn5m1iuMMdKswu7z",
-          },
+          { id: "menta-ppt-1", title: "IISER Overview", type: "ppt", publicId: "IISER.pdf" },
+          { id: "menta-ppt-2", title: "1 Lakh to 5 Lakh", type: "ppt", publicId: "1_Lakh_to_5_Lakh.pdf" },
+          { id: "menta-ppt-3", title: "NEET (UG) 2025", type: "ppt", publicId: "NEET_UG_2025.pdf" },
+          { id: "menta-ppt-4", title: "NIT Round 5 Cut-Off 2025", type: "ppt", publicId: "NIT_COLLEGES_ROUND_5_Cut-Off_2025.pdf" },
         ],
-      },
-      {
-        id: "video",
-        label: "Video",
-        icon: "🎬",
-        kind: "videos",
-        description:
-          "YouTube edits, animated content, reels, and short-form videos with engaging storytelling.",
-        driveFolderId: "",
-        items: [
-          {
-            id: "the-menta-video-1",
-            title: "Top IIT CSE Cutoff 2025 (JEE Advanced) ",
-            type: "video",
-            driveFileId: "1gY9rzamcxOhJFhUoBUmdxpWbU0f5rrgH",
-          },
-          {
-            id: "the-menta-video-2",
-            title: "अब Counselling होगी और भी आसान !",
-            type: "video",
-            driveFileId: "1YEqO905m4mJ_3YAHeLpk2RjeLSRnHt52",
-          },
-          {
-            id: "the-menta-video-3",
-            title: "NTA Notification",
-            type: "video",
-            driveFileId: "1YEqO915s4Bj_OoqPKonQwe0PK89Wa38CsDfE7P",
-          }
-        ],
-      },
-    ],
-  },
-  {
-    id: "video-edit",
-    title: "Video Edit Collection",
-    subtitle: "Reels & Promotional Edits",
-    description:
-      "A curated collection of short-form reels and promotional edits across brands and campaigns.",
-    poster: "/work/video-edit/poster.svg",
-    featured: false,
-    gradient: "from-purple-600/40 to-violet-900/40",
-    categories: [
-      {
-        id: "reels",
-        label: "Reels",
-        icon: "📲",
-        kind: "videos",
-        description:
-          "Short-form vertical reels crafted for Instagram and Facebook engagement.",
-        driveFolderId: "",
-        items: [],
-      },
-      {
-        id: "promos",
-        label: "Promo Edits",
-        icon: "✂️",
-        kind: "videos",
-        description:
-          "Promotional video edits, ad cuts, and campaign highlight reels.",
-        driveFolderId: "",
-        items: [],
       },
     ],
   },
 ];
 
-// Used by Hero collage — same data, shorter alias
 export const projects = companies;
 
 export const services = [

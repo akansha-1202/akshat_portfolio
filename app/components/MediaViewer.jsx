@@ -1,23 +1,29 @@
 "use client";
 
 import { useEffect } from "react";
-import { getDriveEmbedUrl, getDriveThumbnailUrl, getDriveViewUrl } from "@/app/lib/drive";
+import {
+  getMediaUrl,
+  getOriginalUrl,
+  getThumbnailUrl,
+} from "@/app/lib/cloudinary";
+import { CachedImage, CachedVideo } from "@/app/components/CachedMedia";
 
 const TYPE_META = {
   video: { label: "Reel", icon: "▶" },
   image: { label: "Post", icon: "🖼" },
+  ppt: { label: "PPT", icon: "📄" },
   pdf: { label: "PDF", icon: "📄" },
 };
 
 export default function MediaViewer({ item, onClose }) {
-  const embedUrl = getDriveEmbedUrl(item.driveFileId);
-  const thumbUrl = getDriveThumbnailUrl(item.driveFileId);
-  const viewUrl = getDriveViewUrl(item.driveFileId);
   const isVideo = item.type === "video";
   const isImage = item.type === "image";
-  const isPdf = item.type === "pdf";
+  const isPpt = item.type === "ppt" || item.type === "pdf";
+  const mediaUrl = getMediaUrl(item);
+  const posterUrl = isVideo ? getThumbnailUrl(item, 900) : null;
+  const originalUrl = getOriginalUrl(item);
   const typeMeta = TYPE_META[item.type] || { label: item.type, icon: "📁" };
-  const hasMedia = (embedUrl && (isVideo || isPdf)) || (isImage && thumbUrl);
+  const hasMedia = Boolean(mediaUrl);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -40,7 +46,6 @@ export default function MediaViewer({ item, onClose }) {
       <div className="media-viewer" onClick={(e) => e.stopPropagation()}>
         <div className="media-viewer-glow" aria-hidden="true" />
 
-        {/* Header */}
         <div className="media-viewer-header">
           <div className="media-viewer-header-main">
             <span className="media-viewer-type">
@@ -74,27 +79,32 @@ export default function MediaViewer({ item, onClose }) {
           </button>
         </div>
 
-        {/* Media stage */}
         <div
           className={`media-viewer-stage ${
-            isImage ? "media-viewer-stage-image" : "media-viewer-stage-video"
+            isImage || isPpt
+              ? "media-viewer-stage-image"
+              : "media-viewer-stage-video"
           }`}
         >
-          {embedUrl && (isVideo || isPdf) && (
-            <iframe
-              src={embedUrl}
+          {isVideo && mediaUrl && (
+            <CachedVideo
+              src={mediaUrl}
+              poster={posterUrl}
               title={item.title}
-              className="media-viewer-iframe"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
+              wrapperClassName="media-viewer-cached"
+              className="media-viewer-video"
+              controls
+              autoPlay
+              muted
             />
           )}
-          {isImage && thumbUrl && (
+          {(isImage || isPpt) && mediaUrl && (
             <div className="media-viewer-image-wrap">
-              <img
-                src={thumbUrl}
+              <CachedImage
+                src={mediaUrl}
                 alt={item.title}
-                referrerPolicy="no-referrer"
+                loading="eager"
+                wrapperClassName="media-viewer-cached"
                 className="media-viewer-image"
               />
             </div>
@@ -106,43 +116,40 @@ export default function MediaViewer({ item, onClose }) {
               </span>
               <p className="media-viewer-fallback-title">Preview unavailable</p>
               <p className="media-viewer-fallback-desc">
-                This file couldn&apos;t be loaded here. Open it directly in Google Drive.
+                This file couldn&apos;t be loaded from the CDN.
               </p>
-              {viewUrl && (
-                <a
-                  href={viewUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary media-viewer-fallback-btn"
-                >
-                  Open in Drive ↗
-                </a>
-              )}
             </div>
           )}
         </div>
 
-        {/* Footer */}
-        {hasMedia && viewUrl && (
+        {hasMedia && (
           <div className="media-viewer-footer">
             <p className="media-viewer-hint">Press Esc to close</p>
-            <a
-              href={viewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="media-viewer-drive-link"
-            >
-              Open in Google Drive
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path
-                  d="M2 10L10 2M10 2H4M10 2v6"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+            {originalUrl && (
+              <a
+                href={originalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="media-viewer-drive-link"
+              >
+                Open original
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 10L10 2M10 2H4M10 2v6"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            )}
           </div>
         )}
       </div>
