@@ -2000,14 +2000,14 @@ body {
   .work-panel-media {
     position: relative;
     width: 100%;
-    height: 170px;
+    height: 230px;
     overflow: hidden;
     background: #141414;
   }
 
   @media (min-width: 1024px) {
     .work-panel-media {
-      height: 180px;
+      height: 260px;
     }
   }
 
