@@ -14,21 +14,22 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Akshat Verma | Graphic Designer & Video Editor",
+  title: "Akshat Verma | Video Editor, Graphic Designer & AI Content Creator",
   description:
-    "Portfolio of Akshat Verma — Graphic Designer and Video Editor specializing in Meta ads, social media creatives, reels, and brand visuals.",
+    "Portfolio of Akshat Verma — Video Editor, Graphic Designer, and AI Content Creator specializing in short-form video, Meta ads, AI-powered creatives, and brand visuals.",
   keywords: [
     "graphic designer",
     "video editor",
+    "AI content creator",
     "Meta ads",
     "social media creatives",
     "reels",
     "Lucknow",
   ],
   openGraph: {
-    title: "Akshat Verma | Graphic Designer & Video Editor",
+    title: "Akshat Verma | Video Editor, Graphic Designer & AI Content Creator",
     description:
-      "Helping brands grow through design-driven strategy, creative storytelling, and Meta ad creatives.",
+      "Short-form video, Meta ad creatives, and AI-powered brand content for social platforms.",
     type: "website",
     url: "https://www.linkedin.com/in/akshatverm-gd-ve/",
   },

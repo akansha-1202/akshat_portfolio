@@ -1,13 +1,13 @@
 export const profile = {
   name: "Akshat Verma",
-  title: "Graphic Designer, Video Editor & Digital Marketer",
+  title: "Video Editor, Graphic Designer & AI Content Creator",
   location: "Lucknow, Uttar Pradesh, India",
   email: "akshatv0019@gmail.com",
   phone: "+91 9565072333",
   whatsapp: "916388600616",
   tagline:
-    "Helping brands grow through design-driven strategy, creative storytelling, and scroll-stopping Meta ad creatives.",
-  bio: "Creative and passionate Graphic Designer, Video Editor, and Digital Marketer with hands-on experience in designing, branding, and digital promotions. I started at Pathshala Institute creating impactful designs and managing social media, currently edit for The Menta YouTube channel, and freelance with Anon India on AI-powered ad videos and real estate Meta creatives. I believe in continuous learning — ensuring my work always matches the latest trends and audience expectations.",
+    "Turning scripts and footage into scroll-stopping short-form video, Meta ad creatives, and AI-powered brand content.",
+  bio: "Detail-oriented Video Editor, Graphic Designer, and AI Content Creator with hands-on experience turning raw footage, scripts, and creative assets into engaging short-form content for YouTube, Instagram, and Meta ads. Started at Pathshala Institute editing reels and social creatives, currently edit and design presentations for The Menta, and freelance with Anon India as a Graphic Designer & AI Video Creator — delivering promotional videos and high-conversion Meta ads for real estate, interior design, and construction clients.",
   languages: ["Hindi", "English"],
   socials: {
     linkedin: "https://www.linkedin.com/in/akshatverm-gd-ve/",
@@ -41,8 +41,9 @@ export const companies = [
   {
     id: "ai_content",
     title: "AI Content",
-    subtitle: "AI Ads & Motion",
-    description: "AI-powered ad videos and creative motion pieces.",
+    subtitle: "AI Content Creator — Ads & Motion",
+    description:
+      "AI-powered ad videos and generative motion pieces crafted as an AI Content Creator for brands and campaigns.",
     poster: "/work/ai-content/poster.svg",
     featured: true,
     gradient: "from-rose-600/40 to-orange-900/40",
@@ -52,7 +53,7 @@ export const companies = [
         label: "Videos",
         icon: "✨",
         kind: "videos",
-        description: "AI video ads and generative creatives.",
+        description: "AI video ads, product promos, and generative creatives.",
         items: [
           { id: "ai-1", title: "Penguin Anon India", type: "video", publicId: "Penguin_anon_india.mp4" },
           { id: "ai-2", title: "Moral Story", type: "video", publicId: "Moral_story.mp4" },
@@ -95,8 +96,9 @@ export const companies = [
   {
     id: "anon_india",
     title: "Anon India",
-    subtitle: "Real Estate Meta Ads & Branding",
-    description: "High-conversion graphic designs and video creatives for Meta campaigns.",
+    subtitle: "AI Video Creator · Meta Ads & Branding",
+    description:
+      "Promotional and branding videos plus high-conversion Meta creatives for real estate, interior design, and construction clients.",
     poster: "/work/anon-india/poster.svg",
     featured: false,
     gradient: "from-orange-600/40 to-red-900/40",
@@ -106,7 +108,7 @@ export const companies = [
         label: "Images",
         icon: "🎨",
         kind: "posts",
-        description: "Static ads, social posts, and branding creatives.",
+        description: "Static Meta ads, social posts, and branding creatives.",
         items: [
           { id: "anon-img-1", title: "IRIS Broadway — Commercial Ad", type: "image", publicId: "IRIS_BROADWAY.jpg" },
           { id: "anon-img-2", title: "IRIS Broadway — Brand Visual", type: "image", publicId: "IRIS_Broadway.jpg" },
@@ -120,7 +122,7 @@ export const companies = [
         label: "Videos",
         icon: "🎬",
         kind: "videos",
-        description: "Promotional reels and brand video ads.",
+        description: "Short-form promotional and branding videos for social platforms.",
         items: [
           { id: "anon-vid-1", title: "Anon India — Awards Reel", type: "video", publicId: "Aonon_india_Awards.mp4" },
         ],
@@ -180,8 +182,9 @@ export const companies = [
   {
     id: "the_menta",
     title: "The Menta",
-    subtitle: "YouTube & Learning Content",
-    description: "Presentation decks and learning visuals for The Menta education brand.",
+    subtitle: "YouTube Edits & Presentations",
+    description:
+      "End-to-end YouTube video editing and structured presentation decks for The Menta learning content.",
     poster: "/work/the-menta/poster.svg",
     featured: false,
     gradient: "from-emerald-600/40 to-teal-900/40",
@@ -215,10 +218,10 @@ export const services = [
   },
   {
     icon: "🎬",
-    title: "Video Editing & Reels",
+    title: "Video Editing & AI Content",
     description:
       "YouTube edits, promotional reels, motion graphics, and AI-powered ad videos with engaging storytelling and platform-optimized pacing.",
-    highlights: ["YouTube & reels", "Motion graphics", "AI ad videos"],
+    highlights: ["YouTube & reels", "AI content creation", "Motion graphics"],
   },
   {
     icon: "✨",
@@ -232,35 +235,40 @@ export const services = [
 export const experience = [
   {
     company: "Anon India",
-    role: "Freelance Graphic Designer & Ads Video Creator",
+    role: "Graphic Designer & AI Video Creator (Freelance)",
     period: "Nov 2025 – Present",
     responsibilities: [
-      "Create high-conversion Meta ad creatives (static, carousel, story) for real estate lead generation.",
-      "Design social media posts, reels, project launch creatives, and event promotion campaigns.",
-      "Build video ad creatives optimized for Facebook & Instagram with branding-consistent, premium layouts.",
-      "Collaborate with the marketing team on audience psychology and platform-specific requirements.",
+      "Edit promotional and branding videos for short-form, vertical social platforms across real estate, interior design, and construction clients — with pacing and cuts built to maximize watch-through.",
+      "Design high-conversion static and video ad creatives for Meta (Facebook & Instagram), combining audience psychology with platform guidelines for lead-gen and project-launch campaigns.",
+      "Create AI-powered video content and brand visuals that stay consistent with client identity and campaign goals.",
+    ],
+  },
+  {
+    company: "AI Content Creation",
+    role: "AI Content Creator",
+    period: "2025 – Present",
+    responsibilities: [
+      "Produce AI-powered ad videos and generative motion pieces for product promos, brand storytelling, and social campaigns.",
+      "Blend AI tools with hands-on editing to deliver polished short-form creatives optimized for Instagram, YouTube, and Meta ads.",
+      "Turn briefs and creative assets into scroll-stopping vertical (9:16) content with strong pacing, sound design, and visual continuity.",
     ],
   },
   {
     company: "The Menta",
-    role: "Graphic Designer, Video Editor & Animator",
+    role: "Video Editor & Presentation Designer",
     period: "May 2025 – Present",
     responsibilities: [
-      "Edit YouTube videos, reels, and educational content with clear visual storytelling.",
-      "Develop animated content, logos, brochures, and digital ads for social media marketing.",
-      "Implement animation techniques to enhance marketing materials and brand campaigns.",
-      "Work in a fast-paced creative team focused on growth and innovation.",
+      "Edit YouTube videos end-to-end — cutting, sequencing, and pacing footage into clear, engaging narratives from the first few seconds.",
+      "Build structured, professional PowerPoint presentations to support video and learning content with consistent visual style and messaging.",
     ],
   },
   {
     company: "Pathshala Institute",
     role: "Graphic Designer & Video Editor",
-    period: "Oct 2024 – Dec 2025",
+    period: "Oct 2024 – Jun 2025",
     responsibilities: [
-      "Designed posters, banners, social media graphics, and infographics for educational branding.",
-      "Edited educational and promotional videos using Premiere Pro and After Effects.",
-      "Created motion graphics to simplify complex educational concepts for digital platforms.",
-      "Managed social media presence and contributed to batch and event promotions.",
+      "Edited promotional reels and short-form videos for social media, using cuts, transitions, and background music suited to platform viewing habits.",
+      "Created social media graphic creatives supporting institutional branding and outreach campaigns.",
     ],
   },
 ];
@@ -289,7 +297,7 @@ export const toolkit = [
     description: "Ad creatives, content strategy, and AI-powered video.",
     tools: [
       "Meta Ads Creatives",
-      "AI Video Creator",
+      "AI Content Creator",
       "Content Strategy",
       "Social Media Marketing",
     ],
@@ -302,9 +310,17 @@ export const education = [
     institution: "University of Lucknow",
     period: "2022 – Present",
     description:
-      "Pursuing BA while building a career in graphic design, video editing, and digital marketing.",
+      "Pursuing BA while building a career in graphic design, video editing, and AI content creation.",
     icon: "🎓",
     type: "Degree",
+  },
+  {
+    title: "Graphic Design — Hero to Zero",
+    institution: "Vibhu Sir",
+    period: "Sep 2025 – Present",
+    description: "Hands-on graphic design training focused on practical creative skills.",
+    icon: "🎨",
+    type: "Training",
   },
   {
     title: "Computer Operator & Programming Assistant (COPA)",
@@ -324,7 +340,7 @@ export const education = [
     type: "Program",
   },
   {
-    title: "AI Powered Digital Marketing with SEO",
+    title: "AI-Powered Digital Marketing with SEO",
     institution: "Pankaj Kumar SEO",
     period: "Completed",
     description:
@@ -337,6 +353,7 @@ export const education = [
 export const marqueeItems = [
   "Design",
   "Edit",
+  "AI Content",
   "Meta Ads",
   "Reels",
   "Branding",
