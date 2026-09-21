@@ -187,6 +187,29 @@ export const companies = [
     gradient: "from-emerald-600/40 to-teal-900/40",
     categories: [
       {
+        id: "videos",
+        label: "Videos",
+        icon: "🎬",
+        kind: "videos",
+        description: "YouTube edits and short-form learning videos.",
+        items: [
+          {
+            id: "menta-vid-1",
+            title: "Top IIT CSE Cutoff 2025",
+            type: "video",
+            publicId:
+              "Top_IIT_CSE_Cutoff_2025_JEE_Advanced___Opening_Closing_Ranks_for_Computer_Science_in_IITs.mp4",
+          },
+          {
+            id: "menta-vid-2",
+            title: "JEE Counselling Short",
+            type: "video",
+            publicId:
+              "अब_Counselling_होगी_और_भी_आसान_jee2025_collegeadmission_jeeadvanced2025_josaa2025_shorts.mp4",
+          },
+        ],
+      },
+      {
         id: "ppt",
         label: "PPT",
         icon: "📊",

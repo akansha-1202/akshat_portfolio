@@ -9,6 +9,7 @@ export function stripExt(publicId = "") {
 /**
  * Build a Cloudinary delivery URL.
  * Transforms use q_auto / f_auto so the CDN caches optimized variants.
+ * Public IDs are path-encoded so non-ASCII names (e.g. Hindi) resolve correctly.
  */
 export function cloudinaryUrl({
   publicId,
@@ -18,7 +19,11 @@ export function cloudinaryUrl({
   if (!publicId) return null;
   const tx = transforms.filter(Boolean).join(",");
   const path = tx ? `${tx}/` : "";
-  return `${BASE}/${resourceType}/upload/${path}${publicId}`;
+  const encodedId = String(publicId)
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/");
+  return `${BASE}/${resourceType}/upload/${path}${encodedId}`;
 }
 
 /** Render a single PDF/PPT page as a JPEG (raw PDF download is blocked on this account). */
