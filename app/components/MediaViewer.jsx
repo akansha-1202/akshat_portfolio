@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getMediaUrl,
   getOriginalUrl,
+  getPdfPageUrl,
   getThumbnailUrl,
 } from "@/app/lib/cloudinary";
-import { CachedImage, CachedVideo } from "@/app/components/CachedMedia";
+import { CachedImage, CachedVideo, MediaSkeleton } from "@/app/components/CachedMedia";
 
 const TYPE_META = {
   video: { label: "Reel", icon: "▶" },
@@ -14,6 +15,95 @@ const TYPE_META = {
   ppt: { label: "PPT", icon: "📄" },
   pdf: { label: "PDF", icon: "📄" },
 };
+
+const MAX_PPT_PAGES = 40;
+
+function PptSlide({ publicId, pageNum, title }) {
+  return (
+    <figure className="media-viewer-ppt-slide">
+      <CachedImage
+        src={getPdfPageUrl(publicId, pageNum, 1400)}
+        alt={`${title} — page ${pageNum}`}
+        loading={pageNum === 1 ? "eager" : "lazy"}
+        wrapperClassName="media-viewer-ppt-slide-frame"
+        className="media-viewer-ppt-slide-img"
+      />
+      <figcaption className="media-viewer-ppt-slide-label">
+        Slide {pageNum}
+      </figcaption>
+    </figure>
+  );
+}
+
+function PptPageViewer({ publicId, title }) {
+  const [pages, setPages] = useState([1]);
+  const [discovering, setDiscovering] = useState(true);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    let page = 2;
+
+    setPages([1]);
+    setDiscovering(true);
+
+    const discover = () => {
+      if (cancelled || page > MAX_PPT_PAGES) {
+        if (!cancelled) setDiscovering(false);
+        return;
+      }
+
+      const img = new window.Image();
+      img.onload = () => {
+        if (cancelled) return;
+        setPages((prev) => (prev.includes(page) ? prev : [...prev, page]));
+        page += 1;
+        discover();
+      };
+      img.onerror = () => {
+        if (!cancelled) setDiscovering(false);
+      };
+      img.src = getPdfPageUrl(publicId, page, 80);
+    };
+
+    discover();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [publicId]);
+
+  return (
+    <div
+      ref={scrollRef}
+      className="media-viewer-ppt-scroll"
+      data-lenis-prevent
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+    >
+      {pages.map((pageNum) => (
+        <PptSlide
+          key={`${publicId}-${pageNum}`}
+          publicId={publicId}
+          pageNum={pageNum}
+          title={title}
+        />
+      ))}
+
+      {discovering && (
+        <>
+          <div className="media-viewer-ppt-slide media-viewer-ppt-slide-pending" aria-hidden="true">
+            <MediaSkeleton className="media-viewer-ppt-slide-skeleton" />
+            <span className="media-viewer-ppt-slide-label">Loading…</span>
+          </div>
+          <div className="media-viewer-ppt-slide media-viewer-ppt-slide-pending" aria-hidden="true">
+            <MediaSkeleton className="media-viewer-ppt-slide-skeleton" />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function MediaViewer({ item, onClose }) {
   const isVideo = item.type === "video";
@@ -26,9 +116,20 @@ export default function MediaViewer({ item, onClose }) {
   const hasMedia = Boolean(mediaUrl);
 
   useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && onClose();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event("lenis:stop"));
+
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      // Keep Lenis stopped while the parent gallery modal is still open.
+      window.removeEventListener("keydown", onKey);
+    };
   }, [onClose]);
 
   return (
@@ -40,7 +141,11 @@ export default function MediaViewer({ item, onClose }) {
       aria-labelledby="media-viewer-title"
       data-lenis-prevent
     >
-      <div className="media-viewer" onClick={(e) => e.stopPropagation()} data-lenis-prevent>
+      <div
+        className={`media-viewer ${isPpt ? "media-viewer-ppt-mode" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+        data-lenis-prevent
+      >
         <div className="media-viewer-glow" aria-hidden="true" />
 
         <div className="media-viewer-header">
@@ -81,7 +186,7 @@ export default function MediaViewer({ item, onClose }) {
             isImage || isPpt
               ? "media-viewer-stage-image"
               : "media-viewer-stage-video"
-          }`}
+          } ${isPpt ? "media-viewer-stage-ppt" : ""}`}
         >
           {isVideo && mediaUrl && (
             <CachedVideo
@@ -95,7 +200,7 @@ export default function MediaViewer({ item, onClose }) {
               muted
             />
           )}
-          {(isImage || isPpt) && mediaUrl && (
+          {isImage && mediaUrl && (
             <div className="media-viewer-image-wrap">
               <CachedImage
                 src={mediaUrl}
@@ -105,6 +210,9 @@ export default function MediaViewer({ item, onClose }) {
                 className="media-viewer-image"
               />
             </div>
+          )}
+          {isPpt && item.publicId && (
+            <PptPageViewer publicId={item.publicId} title={item.title} />
           )}
           {!hasMedia && (
             <div className="media-viewer-fallback">
@@ -121,8 +229,10 @@ export default function MediaViewer({ item, onClose }) {
 
         {hasMedia && (
           <div className="media-viewer-footer">
-            <p className="media-viewer-hint">Press Esc to close</p>
-            {originalUrl && (
+            <p className="media-viewer-hint">
+              {isPpt ? "Scroll to browse slides · Esc to close" : "Press Esc to close"}
+            </p>
+            {originalUrl && !isPpt && (
               <a
                 href={originalUrl}
                 target="_blank"

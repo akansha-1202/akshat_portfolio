@@ -2719,11 +2719,126 @@ body {
 
   .media-viewer-stage-image {
     flex: 1;
-    min-height: 280px;
+    min-height: 0;
     max-height: calc(92vh - 11rem);
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .media-viewer-ppt-mode {
+    height: min(92vh, 900px);
+  }
+
+  .media-viewer-stage-ppt {
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    min-height: 0;
+    flex: 1 1 auto;
+    max-height: none;
+    height: auto;
+  }
+
+  .media-viewer-ppt-scroll {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding: 1rem 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 107, 74, 0.55) rgba(255, 255, 255, 0.06);
+  }
+
+  .media-viewer-ppt-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .media-viewer-ppt-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+  }
+
+  .media-viewer-ppt-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 74, 0.55);
+    border-radius: 999px;
+  }
+
+  .media-viewer-ppt-slide {
+    position: relative;
+    width: 100%;
+    flex: 0 0 auto;
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .media-viewer-ppt-slide-frame {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 14rem;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .media-viewer-ppt-slide-frame:has(.media-viewer-ppt-slide-img.is-loaded) {
+    aspect-ratio: auto;
+    min-height: 0;
+  }
+
+  .media-viewer-ppt-slide-frame .media-skeleton {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+  }
+
+  .media-viewer-ppt-slide-img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    max-width: 100%;
+    object-fit: contain !important;
+    vertical-align: top;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .media-viewer-ppt-slide-pending {
+    min-height: 14rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .media-viewer-ppt-slide-skeleton {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0.75rem;
+  }
+
+  .media-viewer-ppt-slide-label {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    z-index: 2;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    pointer-events: none;
   }
 
   .media-viewer-iframe {

@@ -16,6 +16,8 @@ export function CachedImage({
   className = "",
   wrapperClassName = "",
   loading = "lazy",
+  onLoad,
+  onError,
 }) {
   const imgRef = useRef(null);
   const [status, setStatus] = useState("loading");
@@ -43,8 +45,14 @@ export function CachedImage({
         className={`media-frame-asset ${className} ${
           status === "loaded" ? "is-loaded" : "is-loading"
         }`}
-        onLoad={() => setStatus("loaded")}
-        onError={() => setStatus("error")}
+        onLoad={(e) => {
+          setStatus("loaded");
+          onLoad?.(e);
+        }}
+        onError={(e) => {
+          setStatus("error");
+          onError?.(e);
+        }}
       />
       {status === "error" && (
         <div className="media-frame-error" aria-hidden="true">

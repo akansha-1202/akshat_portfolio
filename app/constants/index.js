@@ -110,11 +110,8 @@ export const companies = [
         kind: "posts",
         description: "Static Meta ads, social posts, and branding creatives.",
         items: [
-          { id: "anon-img-1", title: "IRIS Broadway — Commercial Ad", type: "image", publicId: "IRIS_BROADWAY.jpg" },
-          { id: "anon-img-2", title: "IRIS Broadway — Brand Visual", type: "image", publicId: "IRIS_Broadway.jpg" },
-          { id: "anon-img-3", title: "Interior Design Post", type: "image", publicId: "Anon_India_Interior_Design_Instagram_Post_1.png" },
-          { id: "anon-img-4", title: "Campaign Creative", type: "image", publicId: "1.png" },
-          { id: "anon-img-5", title: "IRIS Broadway — Promo Graphic", type: "image", publicId: "IRIS_BROADWAY.png" },
+          { id: "anon-img-1", title: "IRIS Broadway — Promo Graphic", type: "image", publicId: "IRIS_BROADWAY.png" },
+          { id: "anon-img-2", title: "Interior Design Post", type: "image", publicId: "Anon_India_Interior_Design_Instagram_Post_1.png" },
         ],
       },
       {

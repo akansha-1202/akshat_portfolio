@@ -21,6 +21,16 @@ export function cloudinaryUrl({
   return `${BASE}/${resourceType}/upload/${path}${publicId}`;
 }
 
+/** Render a single PDF/PPT page as a JPEG (raw PDF download is blocked on this account). */
+export function getPdfPageUrl(publicId, page = 1, width = 1400) {
+  if (!publicId) return null;
+  return cloudinaryUrl({
+    publicId,
+    resourceType: "image",
+    transforms: ["f_jpg", `pg_${page}`, "q_auto", "c_limit", `w_${width}`],
+  });
+}
+
 /** Full-quality media URL for lightbox playback / large preview. */
 export function getMediaUrl(item) {
   if (!item?.publicId) return null;
@@ -34,12 +44,7 @@ export function getMediaUrl(item) {
   }
 
   if (item.type === "ppt" || item.type === "pdf") {
-    // PDFs render as page images on this Cloudinary account
-    return cloudinaryUrl({
-      publicId: item.publicId,
-      resourceType: "image",
-      transforms: ["f_jpg", "pg_1", "q_auto", "c_limit", "w_1400"],
-    });
+    return getPdfPageUrl(item.publicId, 1, 1400);
   }
 
   return cloudinaryUrl({
@@ -76,11 +81,19 @@ export function getThumbnailUrl(item, width = 600) {
   });
 }
 
-/** Direct CDN link (share / open original). */
+/**
+ * Direct CDN link (share / open original).
+ * PDFs on this Cloudinary account return 401 without transforms,
+ * so PPT/PDF links use a rendered page image instead.
+ */
 export function getOriginalUrl(item) {
   if (!item?.publicId) return null;
-  const resourceType =
-    item.type === "video" ? "video" : "image";
+
+  if (item.type === "ppt" || item.type === "pdf") {
+    return getPdfPageUrl(item.publicId, 1, 1600);
+  }
+
+  const resourceType = item.type === "video" ? "video" : "image";
   return cloudinaryUrl({
     publicId: item.publicId,
     resourceType,
