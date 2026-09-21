@@ -26,13 +26,9 @@ export default function MediaViewer({ item, onClose }) {
   const hasMedia = Boolean(mediaUrl);
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
     const onKey = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
   return (
@@ -42,8 +38,9 @@ export default function MediaViewer({ item, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="media-viewer-title"
+      data-lenis-prevent
     >
-      <div className="media-viewer" onClick={(e) => e.stopPropagation()}>
+      <div className="media-viewer" onClick={(e) => e.stopPropagation()} data-lenis-prevent>
         <div className="media-viewer-glow" aria-hidden="true" />
 
         <div className="media-viewer-header">

@@ -24,6 +24,11 @@ export default function SmoothScroll({ children }) {
     lenisRef.current = lenis;
     lenis.on("scroll", ScrollTrigger.update);
 
+    const stop = () => lenis.stop();
+    const start = () => lenis.start();
+    window.addEventListener("lenis:stop", stop);
+    window.addEventListener("lenis:start", start);
+
     const raf = (time) => {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -31,6 +36,8 @@ export default function SmoothScroll({ children }) {
     requestAnimationFrame(raf);
 
     return () => {
+      window.removeEventListener("lenis:stop", stop);
+      window.removeEventListener("lenis:start", start);
       lenis.destroy();
       lenisRef.current = null;
     };

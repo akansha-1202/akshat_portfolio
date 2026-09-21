@@ -2349,7 +2349,10 @@ body {
   .work-modal-body {
     position: relative;
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     padding: 1.25rem 1.5rem 1.5rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 107, 74, 0.35) transparent;

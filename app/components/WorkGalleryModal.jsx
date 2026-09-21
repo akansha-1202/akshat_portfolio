@@ -18,12 +18,17 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const onKey = (e) => e.key === "Escape" && !activeItem && onClose();
-    window.addEventListener("keydown", onKey);
+    window.dispatchEvent(new Event("lenis:stop"));
     return () => {
       document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKey);
+      window.dispatchEvent(new Event("lenis:start"));
     };
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && !activeItem && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [onClose, activeItem]);
 
   return (
@@ -34,8 +39,13 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
         role="dialog"
         aria-modal="true"
         aria-labelledby="work-modal-title"
+        data-lenis-prevent
       >
-        <div className="work-modal" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="work-modal"
+          onClick={(e) => e.stopPropagation()}
+          data-lenis-prevent
+        >
           <div className="work-modal-glow" aria-hidden="true" />
 
           <div className="work-modal-header">
@@ -106,7 +116,7 @@ export default function WorkGalleryModal({ company, initialCategoryId, onClose }
             </div>
           </div>
 
-          <div className="work-modal-body">
+          <div className="work-modal-body" data-lenis-prevent>
             {itemCount > 0 ? (
               <div className="work-modal-grid">
                 {activeCategory.items.map((item) => {
